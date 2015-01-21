@@ -1,3 +1,50 @@
+Excercise pg32-33. Homework 3
+
+This removes the new line character from behind each pair of coord. and replaces with a tab
+Find: (\"[NS])\r
+replace: \1\t
+
+This removes the W+S components and replaces it with a "-"
+Find: ([0-9]+ [0-9 \'\"\.]+)[WS]
+replace: -\1
+
+
+This deos the same for East and North, but does not replace with a sign
+Find: ([0-9]+ [0-9 \'\"\.]+)[NE]
+Replace: \1
+
+
+Jonathans assignment
+#Search for pass with your lower case first name
+$ grep "robert" 10k-common-passwords.txt | wc -l
+5
+
+anything that starts with an "a"
+$ grep "^a" 10k-common-passwords.txt | wc -l
+451
+
+only consist of numbers
+$ grep -E "^\d+\d$" 10k-common-passwords.txt | wc -l
+5
+
+Search for any 5 letters followed by 2 numbers
+$ grep -iE "[A-Z]{5}\d{2}" 10k-common-passwords.txt | wc -l
+0
+
+$ grep -E "(\w\w\w)\1" 10k-common-passwords.txt | wc -l
+224
+
+$ grep -iE "[A-Z]{5}\d{2}" 10k-common-passwords.txt | wc -l
+0
+
+
+
+
+
+
+
+
+
 ##Lecture 1/20/15 - Jonathan Sub
 #git set up
 vagrant@data-science-toolbox:~$ git config --global user.name 'Robert Cooper'
