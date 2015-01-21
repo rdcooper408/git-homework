@@ -1,0 +1,64 @@
+do 2.13.2; 2.13.3; and 2.13.4 (bonus points
+for the last part of 2.13.4!)
+
+
+2.13.2
+# This displays the first 3 lines of the fasta file
+  225  head -n3 407228326.fasta
+  
+#this counts the number of lines in each file
+  226  wc -l *.fasta
+  
+#Display data and skip the first two lines
+  227  tail -n+2 407228326.fasta
+  
+#Removes the new line command in the data file
+  228  tail -n+2 407228326.fasta | tr -d "\n"
+  
+#Returns the number of characters
+  229  tail -n+2 407228326.fasta | tr -d "\n" | wc -c
+  230  tail -n+2 407228412.fasta | tr -d "\n" | wc -c
+  231  tail -n+2 E.coli.fasta | tr -d "\n" | wc -c
+
+#This searches for the given sequence and reports only the sequence found
+  232  tail -n+2 407228326.fasta | tr -d "\n" | grep -o "ATGTACATA"
+
+#Displays this sequence data starting two lines down
+  233  tail -n+2 407228326.fasta 
+  
+#This removes the new line command from the text
+  234  tail -n+2 407228326.fasta | tr -d "\n"
+  
+#This looks up the manual for the tr command for "translating or deleting characters"
+  235  man tr
+  
+#This displays only ATGC segments and then counts them
+  236  tail -n+2 E.coli.fasta | tr -d "\n" | grep -o "ATGC" | wc -l
+  
+#This counts the number of AT vs GC nucleotides in the sequence
+  237  tail -n+2 E.coli.fasta | tr -d "\n" | grep -o [A,T] | wc -l
+  238  tail -n+2 E.coli.fasta | tr -d "\n" | grep -o [G,C] | wc -l
+
+
+2.13.3
+#this displays the bottom 13900 lines , then start at line 265, then build it into darwin.txt
+$ head -n 13900 otoos10.txt | tail -n+265 |cat > darwin.txt
+
+#Count the occurrences in darwin.txt of the terms “evolution” or “evolved”, appearing as
+full words and ignoring case.
+$ grep -w -i 'evolution\|evolved' darwin.txt | wc -l
+1
+
+#Searches the document for natural selection or wallace 
+$ grep -w -i 'natural selection\|wallace' darwin.txt | wc -l
+245
+
+2.13.4
+# this returns the TMAX line for every entry on the first of January
+grep -r "180[0-3]0101,TMAX,"
+
+This searches for the max temperature reported for 05 Feb 1800
+$ grep -r "18000205,TMAX.*." | cut -d "," -f 2,4 | sort | tail -n1
+
+This searches for the max temperature reported for 05 May 1800
+$ grep -r "18000505,TMAX.*." | cut -d "," -f 2,4 | sort | tail -n1
