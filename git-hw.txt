@@ -1,0 +1,86 @@
+##Lecture 1/20/15 - Jonathan Sub
+#git set up
+vagrant@data-science-toolbox:~$ git config --global user.name 'Robert Cooper'
+vagrant@data-science-toolbox:~$ git config --global user.email 'rdcooper408@gmail.com'
+vagrant@data-science-toolbox:~$ git config --global core.editor 'nano'
+vagrant@data-science-toolbox:~$ git config --global --list 
+user.name=Robert Cooper
+user.email=rdcooper408@gmail.com
+vagrant@data-science-toolbox:~$ mkdir starting-git
+vagrant@data-science-toolbox:~$ cd starting-git/
+vagrant@data-science-toolbox:~/starting-git$ git init
+Initialized empty Git repository in /home/vagrant/starting-git/.git/
+vagrant@data-science-toolbox:~/starting-git$ ls -a
+.  ..  .git
+
+
+#gives status when you do things
+vagrant@data-science-toolbox:~/starting-git$ git status
+
+
+#vagrant@data-science-toolbox:~/starting-git$ nano readme.txt
+unix: "^" means "control key"
+
+#add readme.txt to the repository
+vagrant@data-science-toolbox:~/starting-git$ nano readme.txt
+vagrant@data-science-toolbox:~/starting-git$ git add readme.txt
+vagrant@data-science-toolbox:~/starting-git$ git status
+vagrant@data-science-toolbox:~/starting-git$ git commit
+
+#write a summary statement in imperative
+#Top line is the summary I added "Add readme.txt"
+vagrant@data-science-toolbox:~/starting-git$ git commit
+[master (root-commit) 27f8326] Add readme.txt------------------------
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+
+#get the log of what you did with the file:
+vagrant@data-science-toolbox:~/starting-git$ git log
+
+
+#now lets dirty it up to the readme file
+$ nano readme.txt
+#add a second line into the file
+
+# checkout deletes your changes (worry about --, hard)
+vagrant@data-science-toolbox:~/starting-git$ git add readme.txt
+vagrant@data-science-toolbox:~/starting-git$ git commit
+
+
+
+
+
+##### Branching #####
+Allows you to rewind time and go back to previously committed files and edit them, and merge them
+
+#creates new branch called "testing"
+vagrant@data-science-toolbox:~/starting-git$ git branch testing
+
+# shows the branches that are active and available
+vagrant@data-science-toolbox:~/starting-git$ git branch
+
+# switch to the testing brach
+vagrant@data-science-toolbox:~/starting-git$ git checkout testing
+Switched to branch 'testing'
+
+# make commits on top of testing
+vagrant@data-science-toolbox:~/starting-git$ nano teapot.txt
+vagrant@data-science-toolbox:~/starting-git$ git add teapot.txt
+vagrant@data-science-toolbox:~/starting-git$ git commit
+#master is still pointing to the original file, but the testing is tracking current changes
+
+#move back to master
+vagrant@data-science-toolbox:~/starting-git$ git checkout master
+#modify readme file in master directory
+vagrant@data-science-toolbox:~/starting-git$ nano readme.txt
+vagrant@data-science-toolbox:~/starting-git$ git add readme.txt
+vagrant@data-science-toolbox:~/starting-git$ git commit
+
+## Testing branch shares info with your master header
+
+## lets merge the two directories back together
+vagrant@data-science-toolbox:~/starting-git$ git merge testing
+
+## see the graph of the changes in the different directories
+
+vagrant@data-science-toolbox:~/starting-git$ git log --graph
