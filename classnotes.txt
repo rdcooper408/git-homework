@@ -1,0 +1,54 @@
+1/15/15 Useful Regular expressions
+
+#\w is the wildcard expression, it searches for any letter or number or subscript
+#Then when you add (\w) this tells the wrangler to grab this text
+#then in the replace field, you say what you want to replace with (the stuff in parenthesis)
+#and then refer to that () by the number position\
+
+#Species Names
+#1.)
+Asprocottus abyssalis
+Find: (\w)\w+ (\w+)
+Replace: \1_\2
+A_abyssalis
+
+
+
+#2.)
+rainbow connection
+Find: (\w\w\w\w)(\w+) (\w+)
+Replace: \1, \1, go away
+output: rain, rain, go away
+
+
+#3.)
+Asprocottus abyssalis
+Find: (\w)(\w+) (\w+)
+Replace: \1\2 \3 \1_\3
+Asprocottus abyssalis A_abyssalis
+
+#same but nested:
+((\w)(\w+)) (\w+)
+\1 \4, \2_\4
+
+#Use backslash to escape if you want to search for things like a backslash (lookup!!)
+(this is an example of escape\)
+Find: \(\w+ \w+ \w+ \w+ \w+ \w+\\\)
+
+(this is an example of escape&)
+Find: \(\w+ \w+ \w+ \w+ \w+ \w+\&\)
+
+
+# \t     is tab
+# \s     white space
+# \r, \n end of line
+# \d     any digit
+
+
+##LatLong!!
++40 46'N +014 15'E
+(.\d+) (\d+)\'\w\s+(.\d+) (\d+)\'\w
+\1 \3
++21, -157
+
+#I had to leave early for my other class!
